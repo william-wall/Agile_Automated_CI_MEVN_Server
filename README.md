@@ -1,9 +1,12 @@
-# Assignment 1 - API testing and Source Control. - AutoReview -
-
-Name: William Wall
-Student Number: 20070255
+# - AutoReview - Backend
 
 NOTE: Network connection is essential for successful running of tests. i.e. for mongo mLab and Heroku hosted server!
+
+## Run server.
+npm start
+
+## Run test script's.
+npm test
 
 ## Overview.
 
