@@ -59,7 +59,7 @@ io.on('connection', function (socket) {
 });
 
 /* GET ALL CHATS */
-app.get('/:roomid', function(req, res, next) {
+app.get('/api/chats/:roomid', function(req, res, next) {
     Chat.find({ room: req.params.roomid }, function (err, products) {
         if (err) return next(err);
         res.json(products);
@@ -67,7 +67,7 @@ app.get('/:roomid', function(req, res, next) {
 });
 
 /* GET SINGLE CHAT BY ID */
-app.get('/:id', function(req, res, next) {
+app.get('/api/chats/:id', function(req, res, next) {
     Chat.findById(req.params.id, function (err, post) {
         if (err) return res.sendStatus(500);
         res.json(post);
@@ -75,7 +75,7 @@ app.get('/:id', function(req, res, next) {
 });
 
 /* SAVE CHAT */
-app.post('/', function(req, res, next) {
+app.post('/api/chats/', function(req, res, next) {
     Chat.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
@@ -83,7 +83,7 @@ app.post('/', function(req, res, next) {
 });
 
 /* UPDATE CHAT */
-app.put('/:id', function(req, res, next) {
+app.put('/api/chats/:id', function(req, res, next) {
     Chat.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
         if (err) return res.sendStatus(500);
         res.json(post);
@@ -91,7 +91,7 @@ app.put('/:id', function(req, res, next) {
 });
 
 /* DELETE CHAT */
-app.delete('/:id', function(req, res, next) {
+app.delete('/api/chats/:id', function(req, res, next) {
     Chat.findByIdAndRemove(req.params.id, req.body, function (err, post) {
         if (err) return res.sendStatus(500);
         res.json(post);

@@ -1,6 +1,6 @@
 // // william wall
 // var express = require('express');
-// var router = express.Router();
+
 // var mongoose = require('mongoose');
 // var app = express();
 // var server = require('http').createServer(app);
