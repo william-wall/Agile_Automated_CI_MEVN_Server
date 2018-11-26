@@ -1,8 +1,11 @@
 // william wall
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const app = express()
+// const app = express()
 var createError = require('http-errors')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -27,6 +30,9 @@ const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 
 var Review = require("../models/Review");
+var Chat = require('../models/Chat.js');
+
+
 
 if (process.env.NODE_ENV === 'test') {
     app.use(logger('dev'));
@@ -39,7 +45,58 @@ app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/rooms', express.static(path.join(__dirname, 'dist')));
 app.use('/api/rooms', room);
-app.use('/api/chats', chat);
+// app.use('/api/chats', chat);
+
+io.on('connection', function (socket) {
+    console.log('User connected');
+    socket.on('disconnect', function() {
+        console.log('User disconnected');
+    });
+    socket.on('save-message', function (data) {
+        console.log(data);
+        io.emit('new-message', { message: data });
+    });
+});
+
+/* GET ALL CHATS */
+app.get('/:roomid', function(req, res, next) {
+    Chat.find({ room: req.params.roomid }, function (err, products) {
+        if (err) return next(err);
+        res.json(products);
+    });
+});
+
+/* GET SINGLE CHAT BY ID */
+app.get('/:id', function(req, res, next) {
+    Chat.findById(req.params.id, function (err, post) {
+        if (err) return res.sendStatus(500);
+        res.json(post);
+    });
+});
+
+/* SAVE CHAT */
+app.post('/', function(req, res, next) {
+    Chat.create(req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });
+});
+
+/* UPDATE CHAT */
+app.put('/:id', function(req, res, next) {
+    Chat.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        if (err) return res.sendStatus(500);
+        res.json(post);
+    });
+});
+
+/* DELETE CHAT */
+app.delete('/:id', function(req, res, next) {
+    Chat.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+        if (err) return res.sendStatus(500);
+        res.json(post);
+    });
+});
 
 /* GET ALL REVIEWS */
 app.get('/reviews', (req, res) => {
@@ -137,4 +194,4 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-app.listen(process.env.PORT || 8081)
+server.listen(process.env.PORT || 8081)
