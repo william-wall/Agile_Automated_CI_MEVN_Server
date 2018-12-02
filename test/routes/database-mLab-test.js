@@ -1,10 +1,10 @@
 // william wall
 "use strict";
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 let expect = chai.expect;
 
 const ReviewSchema = new Schema({
