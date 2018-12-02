@@ -2,7 +2,6 @@
 "use strict";
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-import assert from 'assert';
 
 import app from '../../src/app.js';
 import chai from 'chai';
