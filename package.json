@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "test": "cross-env NODE_ENV=test && mocha --compilers js:babel-core/register test/routes/database-mLab-test.js && mocha --compilers js:babel-core/register test/routes/review-test.js && mocha --compilers js:babel-core/register test/routes/chat-test.js &&  mocha --compilers js:babel-core/register test/routes/room-test.js && mocha --compilers js:babel-core/register test/routes/super-test-review.js"
+    "test": "cross-env NODE_ENV=test && mocha --compilers js:babel-core/register test/routes/database-mLab-test.js && mocha --compilers js:babel-core/register test/routes/review-test.js && mocha --compilers js:babel-core/register test/routes/chat-test.js &&  mocha --compilers js:babel-core/register test/routes/room-test.js && mocha --compilers js:babel-core/register test/routes/super-test-review.js",
+    "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files"
   },
   "keywords": [],
   "author": "",
