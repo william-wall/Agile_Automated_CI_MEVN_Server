@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
+    "clean": "rimraf ./lib && mkdir lib",
     "test": "cross-env NODE_ENV=test && mocha --compilers js:babel-core/register test/routes/database-mLab-test.js && mocha --compilers js:babel-core/register test/routes/review-test.js && mocha --compilers js:babel-core/register test/routes/chat-test.js &&  mocha --compilers js:babel-core/register test/routes/room-test.js && mocha --compilers js:babel-core/register test/routes/super-test-review.js",
-    "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files"
+    "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files",
+    "server": "cross-env NODE_ENV=dev PORT=8081 node lib/src/app.js",
+    "start": "npm-run-all clean test build server"
   },
   "keywords": [],
   "author": "",
@@ -51,6 +53,8 @@
     "cross-env": "^5.2.0",
     "mocha": "^3.4.2",
     "nodemon": "^1.17.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.2",
     "supertest": "^3.3.0",
     "typescript": "^2.8.1"
   }
