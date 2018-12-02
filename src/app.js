@@ -2,19 +2,19 @@
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
 // const app = express()
-var createError = require('http-errors')
-var path = require('path')
-var favicon = require('serve-favicon')
-var logger = require('morgan')
-app.use(bodyParser.json())
-app.use(cors())
+var createError = require('http-errors');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+app.use(bodyParser.json());
+app.use(cors());
 
-var room = require('../routes/room')
-var chat = require('../routes/chat')
+var room = require('../routes/room');
+var chat = require('../routes/chat');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -29,7 +29,7 @@ mongoose.connect('mongodb://will:william1@ds125341.mlab.com:25341/post-app', {
 const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 
-var Review = require("../models/Review");
+var Review = require('../models/Review');
 var Chat = require('../models/Chat.js');
 
 
@@ -107,9 +107,9 @@ app.get('/reviews', (req, res) => {
         res.send({
             reviews: reviews,
             success: true
-        })
-    }).sort({_id: -1})
-})
+        });
+    }).sort({_id: -1});
+});
 
 /* ADD ROOM */
 app.post('/reviews', (req, res) => {
@@ -119,17 +119,17 @@ app.post('/reviews', (req, res) => {
     var new_review = new Review({
         title: title,
         description: description
-    })
+    });
     new_review.save(function (error) {
         if (error) {
-            console.log('Review did NOT add successfully!')
-            console.log(error)
+            console.log('Review did NOT add successfully!');
+            console.log(error);
         }
         res.send({
             success: true
-        })
-    })
-})
+        });
+    });
+});
 
 /* UPDATE REVIEW */
 app.put('/reviews/:id', (req, res) => {
@@ -142,14 +142,14 @@ app.put('/reviews/:id', (req, res) => {
         review.description = req.body.description;
         review.save(function (error) {
             if (error) {
-                console.log(error)
+                console.log(error);
             }
             res.send({
                 success: true
-            })
-        })
-    })
-})
+            });
+        });
+    });
+});
 
 /* DELETE REVIEW */
 app.delete('/reviews/:id', (req, res, error) => {
@@ -161,9 +161,9 @@ app.delete('/reviews/:id', (req, res, error) => {
             return res.sendStatus(500);
         res.send({
             success: true
-        })
-    })
-})
+        });
+    });
+});
 
 /* GET REVIEW BY SINGLE ID */
 app.get('/reviews/:id', (req, res) => {
@@ -172,9 +172,9 @@ app.get('/reviews/:id', (req, res) => {
         if (error) {
             return res.sendStatus(500);
         }
-        res.send(review)
-    })
-})
+        res.send(review);
+    });
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -194,4 +194,4 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-server.listen(process.env.PORT || 8081)
+server.listen(process.env.PORT || 8081);
