@@ -20,7 +20,6 @@ const Chat = mongoose.model("Chat", ChatSchema);
 
 describe('Chat', function () {
     before(function (done) {
-
         var testChat = new Chat({
             room: '5bd04dc76067682a204fc3ed',
             nickname: 'Will',
@@ -250,3 +249,4 @@ describe('Chat', function () {
         });
     });
 });
+//Watching file test

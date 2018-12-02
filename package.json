@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test:watch": "npm run test -- --watch",
     "test": "cross-env NODE_ENV=test && mocha --compilers js:babel-core/register test/routes/database-mLab-test.js && mocha --compilers js:babel-core/register test/routes/review-test.js && mocha --compilers js:babel-core/register test/routes/chat-test.js &&  mocha --compilers js:babel-core/register test/routes/room-test.js && mocha --compilers js:babel-core/register test/routes/super-test-review.js",
     "clean": "rimraf ./lib && mkdir lib",
     "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files",
