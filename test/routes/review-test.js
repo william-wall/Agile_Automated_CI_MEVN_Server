@@ -149,76 +149,76 @@ describe('Reviews', function () {
     });
 
 
-    describe('PUT /reviews/:id', () => {
-
-        describe('Updating Reviews', function () {
-
-            describe('Error Handling', () => {
-
-                it('should not update anything and get status 500 for incorrect id', function (done) {
-                    let updateReview = {
-                        title: 'Updated Title',
-                        description: 'Updated Description'
-                    };
-                    chai.request(app)
-                        .get('/reviews')
-                        .end(function (err, res) {
-                            chai.request(app)
-                                .put('/reviews/12')
-                                .send(updateReview)
-                                .end(function (err, res) {
-                                    expect(res).to.have.status(500);
-                                    done();
-                                });
-                        });
-                });
-            });
-            it('should update an instance of review title', (done) => {
-                someReview.set('title', 'Review title 2');
-                assertReview(someReview.save(), done);
-            });
-            it('should update a specific record by choosing title', (done) => {
-                assertReview(Review.update({title: 'Review title 1'},
-                    {title: 'Updated review title'}), done);
-            });
-            describe('Update Single Review by ID', () => {
-
-                it('should update a specific record by id and verify its added to the database', (done) => {
-                    let updateReview = {
-                        title: 'Updated Title',
-                        description: 'Updated Description'
-                    };
-                    chai.request(app)
-                        .get('/reviews')
-                        .end(function (err, res) {
-                            chai.request(app)
-                                .put('/reviews/' + someReview._id)
-                                .send(updateReview)
-                                .end(function (error, response) {
-                                    expect(updateReview).to.be.a('object');
-                                    expect(res.body).to.have.property('success').equal(true);
-                                    expect(res).to.have.status(200);
-                                    done();
-                                });
-                        });
-                });
-                after(function (done) {
-                    chai.request(app)
-                        .get('/reviews')
-                        .end(function (err, res) {
-                            let result = _.map(res.body.reviews, (reviews) => {
-                                return {
-                                    title: reviews.title,
-                                    description: reviews.description
-                                };
-                            });
-                            expect(result).to.include({title: 'Updated Title', description: 'Updated Description'});
-                            done();
-                        });
-                });
-            });
-        });
-    });
+    // describe('PUT /reviews/:id', () => {
+    //
+    //     describe('Updating Reviews', function () {
+    //
+    //         describe('Error Handling', () => {
+    //
+    //             it('should not update anything and get status 500 for incorrect id', function (done) {
+    //                 let updateReview = {
+    //                     title: 'Updated Title',
+    //                     description: 'Updated Description'
+    //                 };
+    //                 chai.request(app)
+    //                     .get('/reviews')
+    //                     .end(function (err, res) {
+    //                         chai.request(app)
+    //                             .put('/reviews/12')
+    //                             .send(updateReview)
+    //                             .end(function (err, res) {
+    //                                 expect(res).to.have.status(500);
+    //                                 done();
+    //                             });
+    //                     });
+    //             });
+    //         });
+    //         it('should update an instance of review title', (done) => {
+    //             someReview.set('title', 'Review title 2');
+    //             assertReview(someReview.save(), done);
+    //         });
+    //         it('should update a specific record by choosing title', (done) => {
+    //             assertReview(Review.update({title: 'Review title 1'},
+    //                 {title: 'Updated review title'}), done);
+    //         });
+    //         describe('Update Single Review by ID', () => {
+    //
+    //             it('should update a specific record by id and verify its added to the database', (done) => {
+    //                 let updateReview = {
+    //                     title: 'Updated Title',
+    //                     description: 'Updated Description'
+    //                 };
+    //                 chai.request(app)
+    //                     .get('/reviews')
+    //                     .end(function (err, res) {
+    //                         chai.request(app)
+    //                             .put('/reviews/' + someReview._id)
+    //                             .send(updateReview)
+    //                             .end(function (error, response) {
+    //                                 expect(updateReview).to.be.a('object');
+    //                                 expect(res.body).to.have.property('success').equal(true);
+    //                                 expect(res).to.have.status(200);
+    //                                 done();
+    //                             });
+    //                     });
+    //             });
+    //             after(function (done) {
+    //                 chai.request(app)
+    //                     .get('/reviews')
+    //                     .end(function (err, res) {
+    //                         let result = _.map(res.body.reviews, (reviews) => {
+    //                             return {
+    //                                 title: reviews.title,
+    //                                 description: reviews.description
+    //                             };
+    //                         });
+    //                         expect(result).to.include({title: 'Updated Title', description: 'Updated Description'});
+    //                         done();
+    //                     });
+    //             });
+    //         });
+    //     });
+    // });
 
 
     describe('DELETE /reviews/:id', () => {
