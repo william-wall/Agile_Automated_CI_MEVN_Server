@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "test": "set NODE_ENV=test && mocha test/routes/database-mLab-test.js && mocha test/routes/review-test.js && mocha test/routes/chat-test.js && mocha test/routes/room-test.js && mocha test/routes/super-test-review.js"
+    "test": "cross-env NODE_ENV=test && mocha test/routes/database-mLab-test.js && mocha test/routes/review-test.js && mocha test/routes/chat-test.js && mocha test/routes/room-test.js && mocha test/routes/super-test-review.js"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +44,7 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "chai-things": "^0.2.0",
+    "cross-env": "^5.2.0",
     "mocha": "^3.4.2",
     "nodemon": "^1.17.1",
     "supertest": "^3.3.0",
