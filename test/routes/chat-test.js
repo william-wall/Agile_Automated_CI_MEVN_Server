@@ -1,23 +1,20 @@
 // william wall
 "use strict";
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-const assert = require('assert');
+import assert from 'assert';
 
-
-let app = require('../../src/app.js');
-let chai = require('chai');
-let chaiHttp = require('chai-http');
+import app from '../../src/app.js';
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 let expect = chai.expect;
 let should = chai.should();
 
-
 chai.use(chaiHttp);
-let _ = require('lodash');
+import _ from 'lodash';
 chai.use(require('chai-things'));
 
-var ChatSchema = require('mongoose').model('Chat').schema
-
+var ChatSchema = require('mongoose').model('Chat').schema;
 
 const Chat = mongoose.model("Chat", ChatSchema);
 
