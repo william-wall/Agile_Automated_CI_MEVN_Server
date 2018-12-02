@@ -1,12 +1,11 @@
-var supertest = require("supertest");
-var should = require("should");
-var chai = require('chai');
+import supertest from 'supertest';
+import should from 'should';
+import chai from 'chai';
 var expect = chai.expect;
 
-let _ = require('lodash');
+import _ from 'lodash';
 
 var server = supertest.agent("http://autoreview-testing.herokuapp.com");
-
 
 describe("SuperTest Reviews", function () {
 
