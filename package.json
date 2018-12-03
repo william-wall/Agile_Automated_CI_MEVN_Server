@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "AutoReview Backend",
   "main": "index.js",
   "scripts": {
     "test:watch": "npm run test -- --watch",
