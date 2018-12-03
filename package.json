@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:watch": "npm run test -- --watch",
-    "test": "cross-env NODE_ENV=test && mocha --compilers js:babel-core/register test/routes/database-mLab-test.js && mocha --compilers js:babel-core/register test/routes/review-test.js && mocha --compilers js:babel-core/register test/routes/chat-test.js &&  mocha --compilers js:babel-core/register test/routes/room-test.js && mocha --compilers js:babel-core/register test/routes/super-test-review.js",
     "clean": "rimraf ./lib && mkdir lib",
+    "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files",
     "server": "cross-env NODE_ENV=dev PORT=8081 node lib/src/app.js",
     "start": "npm-run-all clean test build server",
     "server:watch": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js"
