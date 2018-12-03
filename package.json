@@ -11,7 +11,8 @@
     "server": "cross-env NODE_ENV=dev PORT=8081 node lib/src/app.js",
     "start": "npm-run-all clean test build server",
     "server:watch": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js",
-    "coverage": "cross-env NODE_ENV=test PORT=8081 nyc mocha test/routes/review-test.js"
+    "coverage": "cross-env NODE_ENV=test PORT=8081 nyc mocha test/routes/review-test.js",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
   "author": "",
@@ -52,6 +53,7 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "chai-things": "^0.2.0",
+    "coveralls": "^2.13.1",
     "cross-env": "^5.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
