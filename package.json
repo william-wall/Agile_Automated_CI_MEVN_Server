@@ -10,7 +10,8 @@
     "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files",
     "server": "cross-env NODE_ENV=dev PORT=8081 node lib/src/app.js",
     "start": "npm-run-all clean test build server",
-    "server:watch": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js"
+    "server:watch": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js",
+    "coverage": "cross-env NODE_ENV=test PORT=8081 nyc mocha test/routes/review-test.js"
   },
   "keywords": [],
   "author": "",
