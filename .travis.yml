@@ -3,7 +3,7 @@ language: node_js
 node_js:
 - stable
 script:
-- npm run coverage
+- npm run start-coverage
 after_success:
 - npm run publish-coverage
 branches:

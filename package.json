@@ -11,7 +11,10 @@
     "server": "cross-env NODE_ENV=dev PORT=8081 node lib/src/app.js",
     "start": "npm-run-all clean test build server",
     "server:watch": "cross-env NODE_ENV=dev nodemon --exec babel-node src/app.js",
-    "coverage": "cross-env NODE_ENV=test nyc mocha test/routes/review-test.js",
+    "coverage1": "cross-env NODE_ENV=test nyc mocha test/routes/review-test.js",
+    "coverage2": "cross-env NODE_ENV=test nyc mocha test/routes/chat-test.js",
+    "coverage3": "cross-env NODE_ENV=test nyc mocha test/routes/room-test.js",
+    "start-coverage": "npm-run-all coverage1 coverage2 coverage3",
     "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
