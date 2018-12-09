@@ -82,7 +82,7 @@ URL: http://autoreview-testing.herokuapp.com/
 Note: npm test - will run all test scripts
 
         > server@1.0.0 test C:\Users\william\Documents\SSD4\Agile Software Practice\Assignment_1\Assignment_1\server
-        > set NODE_ENV=test && mocha test/routes/database-mLab-test.js && mocha test/routes/review-test.js && mocha test/routes/chat-test.js && mocha test/routes/room-test.js && mocha test/routes/super-test-review.js
+        > set NODE_ENV=test && mocha test/routes/database-mLab-test.js && mocha test/routes/review-test.js && mocha test/routes/chat-test.js && mocha test/routes/room-test.js && mocha test/routes/super-test-3_review.js
 
 
 
