@@ -30,8 +30,16 @@ npm run publish-coverage
 
 ## Overview.
 
-AutoReview is a web app by where users write reviews about motor vehicles and topics.
-Users also have the opportunity to create or join chat rooms and chat in real-time to other authenticated users using socket I/O.
+AutoReview is a web app by where users write Reviews about motor vehicles and topics.
+
+Users also have the opportunity to create or join Chat Rooms and Chat in Real-Time to other authenticated users using socket I/O.
+
+Additionally there is a Gallery section where users submit vehicles with images and specifications.
+
+Another great feature of the application is the Puzzle Slider game. The user inputs an image into the application, from there the image will get shuffled into a number of custom picked pieces. The goal is to slide the squares into a mirror copy of the original image, with a little help from the app if needed.
+
+Users are authenticated through Googles cloud based Firebase platform.
+
 
 The AutoReview API has three main functional areas.
 
