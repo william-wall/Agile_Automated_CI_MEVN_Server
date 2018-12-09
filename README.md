@@ -4,11 +4,29 @@
 
 NOTE: Network connection is essential for successful running of tests. i.e. for mongo mLab and Heroku hosted server!
 
-## Run server.
-npm start
+## Run server - Clean, Test, Build and run Server.
+npm run start
 
 ## Run test script's.
-npm test
+npm run test
+
+## Run clean.
+npm run clean
+
+## Run build.
+npm run build
+
+## Watch tests.
+npm run test:watch
+
+## Watch server - [nodemon].
+npm run server:watch
+
+## Run Coverage.
+npm run coverage
+
+## Publish Coverage.
+npm run publish-coverage
 
 ## Overview.
 
@@ -46,6 +64,12 @@ The AutoReview API has three main functional areas.
   + POST /api/rooms - Post a chat room to database.
   + PUT /api/rooms/:id - Update a room by its id.
   + DELETE /api/rooms/:id - Delete a chat room by its id.
+
+## Continuous Integration and Test results.
+
+Travis CI - https://travis-ci.org/william-wall/Agile_Automated_CI_MEVN_Server
+
+Coveralls - https://coveralls.io/github/william-wall/Agile_Automated_CI_MEVN_Server
 
 ## Data storage.
 
