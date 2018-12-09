@@ -1,5 +1,7 @@
 # - AutoReview - Backend
 
+[![Build Status](https://travis-ci.org/william-wall/Agile_Automated_CI_MEVN_Server.svg?branch=master)](https://travis-ci.org/william-wall/Agile_Automated_CI_MEVN_Server)
+
 NOTE: Network connection is essential for successful running of tests. i.e. for mongo mLab and Heroku hosted server!
 
 ## Run server.
