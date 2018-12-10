@@ -250,3 +250,5 @@ Note: npm test - will run all test scripts
 
 Please note: The chats route requires socket.io which enables real-time chat, but this can only be seen functioning on a client side display.
 Authentication is also build into the front end via cloud based Firebase.
+
+Socket and Server were merged this time around to work on the same port, this is to ensure Socket works seamlessly on client deployment, not just locally.
